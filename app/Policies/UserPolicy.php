@@ -30,4 +30,16 @@ class UserPolicy
     {
         return $currentUser->id === $user->id;
     }
+
+    /**
+     * @param User $currentUser
+     * @param User $user
+     * @author klinson <klinson@163.com>
+     * @return bool
+     */
+    public function destroy(User $currentUser, User $user)
+    {
+        // 是admin权限且不是自己
+        return $currentUser->is_admin && $currentUser->id !== $user->id;
+    }
 }
